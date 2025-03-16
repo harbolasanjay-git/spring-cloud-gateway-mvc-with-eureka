@@ -1,0 +1,24 @@
+package com.stech.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.function.RouterFunction;
+import org.springframework.web.servlet.function.ServerResponse;
+
+import static org.springframework.web.servlet.function.RouterFunctions.route;
+import static org.springframework.cloud.gateway.server.mvc.filter.FilterFunctions.addRequestHeader;
+import static org.springframework.cloud.gateway.server.mvc.predicate.GatewayRequestPredicates.path;
+import static org.springframework.cloud.gateway.server.mvc.handler.HandlerFunctions.forward;
+
+@Configuration
+public class GatewayConfig {
+
+    @Bean
+    RouterFunction<ServerResponse> gatewayRoutes() {
+		return route()
+	            .route(path("/api/**"),
+	                forward("https://example.com"))
+	            .filter(addRequestHeader("X-Example-Header", "Value"))
+	            .build();
+	}
+}

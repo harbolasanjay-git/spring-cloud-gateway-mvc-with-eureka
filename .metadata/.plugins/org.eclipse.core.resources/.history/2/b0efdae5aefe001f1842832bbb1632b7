@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      mvc:
+        routes:
+        - id: order-service
+          predicates: 
+            - Path=/orders/**
+        - id: user-service
+          predicates:
+            - Path=/users/**
+server:
+  ssl:
+    enabled: false		

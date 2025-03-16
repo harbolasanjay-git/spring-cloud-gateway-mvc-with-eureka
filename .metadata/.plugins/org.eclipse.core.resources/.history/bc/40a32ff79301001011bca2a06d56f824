@@ -1,0 +1,25 @@
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    prefer-ip-address: true
+spring:
+  application:
+    name: api-gateway  # ✅ This name will be used in Eureka
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: user-service
+            uri: http://localhost:8081
+            predicates:
+              - Path=/users/**
+          - id: order-service
+            uri: http://localhost:8082
+            predicates:
+              - Path=/orders/**

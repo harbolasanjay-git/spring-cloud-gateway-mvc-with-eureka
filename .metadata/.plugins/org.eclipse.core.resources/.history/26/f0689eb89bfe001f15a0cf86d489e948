@@ -1,0 +1,5 @@
+package com.stech.config;
+
+public class GatewayConfig {
+
+}

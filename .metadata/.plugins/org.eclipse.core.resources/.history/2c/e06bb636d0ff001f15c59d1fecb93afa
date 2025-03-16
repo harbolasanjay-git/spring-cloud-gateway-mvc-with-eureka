@@ -1,0 +1,3 @@
+logging.level.com.netflix.discovery=DEBUG
+logging.level.com.netflix.eureka=DEBUG
+logging.level.org.springframework.cloud.gateway=DEBUG

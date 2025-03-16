@@ -1,0 +1,23 @@
+package com.stech.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.function.RouterFunction;
+import org.springframework.web.servlet.function.ServerResponse;
+import org.springframework.web.servlet.function.RouterFunctions;
+
+import static org.springframework.cloud.gateway.server.mvc.predicate.GatewayRequestPredicates.path;
+import static org.springframework.cloud.gateway.server.mvc.handler.HandlerFunctions.forward;
+import java.net.URI;
+
+@Configuration
+public class GatewayConfig {
+
+    @Bean
+    RouterFunction<ServerResponse> gatewayRoutes() {
+		return RouterFunctions.route()
+	            .route(path("/users/**"), forward(URI.create("http://localhost:8081"))
+	            .route(path("/orders/**"), forward(URI.create("http://localhost:8082"))
+	            .build();
+	}
+}
