@@ -1,3 +1,0 @@
-spring.application.name=api-gateway
-logging.level.org.springframework.cloud.gateway.mvc=DEBUG
-logging.level.org.springframework.cloud.gateway=DEBUG
